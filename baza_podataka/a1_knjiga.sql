@@ -1,0 +1,56 @@
+CREATE DATABASE  IF NOT EXISTS `a1` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `a1`;
+-- MySQL dump 10.13  Distrib 8.0.44, for Win64 (x86_64)
+--
+-- Host: 127.0.0.1    Database: a1
+-- ------------------------------------------------------
+-- Server version	8.0.44
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `knjiga`
+--
+
+DROP TABLE IF EXISTS `knjiga`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `knjiga` (
+  `KnjigaID` int NOT NULL AUTO_INCREMENT,
+  `UDK` varchar(20) DEFAULT NULL,
+  `ISBN` varchar(20) DEFAULT NULL,
+  `Naslov` varchar(100) NOT NULL,
+  PRIMARY KEY (`KnjigaID`),
+  UNIQUE KEY `ISBN` (`ISBN`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `knjiga`
+--
+
+LOCK TABLES `knjiga` WRITE;
+/*!40000 ALTER TABLE `knjiga` DISABLE KEYS */;
+INSERT INTO `knjiga` VALUES (1,'821.163.1','978-86-10-00232-4','Na Drini ćuprija'),(2,'821.163.1','978-86-7436-165-1','Bašta sljezove boje'),(3,'821.163.1','978-86-521-1342-7','Derviš i smrt'),(4,'821.163.1','978-86-7188-123-0','Seobe'),(5,'821.163.1','978-86-521-1105-8','Santa Maria della Salute'),(6,'821.163.1','978-86-10-00439-7','Blago cara Radovana'),(7,'821.163.1','978-86-512-0038-7','Tražim pomilovanje'),(8,'821.163.1','978-86-81235-01-9','Emina'),(9,'821.163.1','978-86-521-0582-7','Koreni'),(10,'821.163.1','978-86-7128-002-6','Jazavac pred sudom');
+/*!40000 ALTER TABLE `knjiga` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2026-01-21  0:14:45
