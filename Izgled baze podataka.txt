@@ -1,0 +1,74 @@
+CREATE DATABASE A1DP;
+USE A1;
+
+-- Tabela Citalac
+CREATE TABLE Citalac (
+    CitalacID INT AUTO_INCREMENT PRIMARY KEY,
+    MaticniBroj VARCHAR(13) UNIQUE NOT NULL,
+    Ime VARCHAR(50) NOT NULL,
+    Prezime VARCHAR(50) NOT NULL,
+    Adresa VARCHAR(100)
+);
+
+-- Tabela Knjiga
+CREATE TABLE Knjiga (
+    KnjigaID INT AUTO_INCREMENT PRIMARY KEY,
+    UDK VARCHAR(20),
+    ISBN VARCHAR(20) UNIQUE,
+    Naslov VARCHAR(100) NOT NULL
+);
+
+-- Tabela Autor
+CREATE TABLE Autor (
+    AutorID INT AUTO_INCREMENT PRIMARY KEY,
+    Ime VARCHAR(50) NOT NULL,
+    Prezime VARCHAR(50) NOT NULL,
+    DatumRodjenja DATE,
+    Adresa VARCHAR(100),
+    Zvanje VARCHAR(50)
+);
+
+-- Tabela Napisali (veza izmedju Autora i Knjiga)
+CREATE TABLE Napisali (
+    AutorID INT,
+    KnjigaID INT,
+    PRIMARY KEY (AutorID, KnjigaID),
+    FOREIGN KEY (AutorID) REFERENCES Autor(AutorID),
+    FOREIGN KEY (KnjigaID) REFERENCES Knjiga(KnjigaID)
+);
+
+-- Tabela Izdavac
+CREATE TABLE Izdavac (
+    IzdavacID INT AUTO_INCREMENT PRIMARY KEY,
+    NazivIzdavaca VARCHAR(100) NOT NULL,
+    Adresa VARCHAR(100)
+);
+
+-- Tabela Izdali (veza izmedju Izdavaca i Knjiga)
+CREATE TABLE Izdali (
+    IzdavacID INT,
+    KnjigaID INT,
+    Godina INT,
+    PRIMARY KEY (IzdavacID, KnjigaID),
+    FOREIGN KEY (IzdavacID) REFERENCES Izdavac(IzdavacID),
+    FOREIGN KEY (KnjigaID) REFERENCES Knjiga(KnjigaID)
+);
+
+-- Tabela Primerak
+CREATE TABLE Primerak (
+    KnjigaID INT,
+    PrimerakID INT AUTO_INCREMENT,
+    PRIMARY KEY (PrimerakID),
+    FOREIGN KEY (KnjigaID) REFERENCES Knjiga(KnjigaID)
+);
+
+-- Tabela Na_Citanju (veza izmedju Knjiga i Citalaca)
+CREATE TABLE Na_Citanju (
+    KnjigaID INT,
+    CitalacID INT,
+    DatumUzimanja DATE,
+    DatumVracanja DATE,
+    PRIMARY KEY (KnjigaID, CitalacID),
+    FOREIGN KEY (KnjigaID) REFERENCES Knjiga(KnjigaID),
+    FOREIGN KEY (CitalacID) REFERENCES Citalac(CitalacID)
+);
